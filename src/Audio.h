@@ -17,6 +17,6 @@ public:
 	void play() const;
 
 	void pause() const;
-private:
+
 	~Audio();
 };
