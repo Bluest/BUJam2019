@@ -13,6 +13,8 @@ link_directories(
 add_executable(Jam
 	src/Jam.h
 	src/Jam.cpp
+	src/Input.h
+	src/Input.cpp
 	src/main.cpp
 )
 
