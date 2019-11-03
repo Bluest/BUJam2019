@@ -17,3 +17,10 @@ add_executable(Jam
 )
 
 target_link_libraries(Jam SDL2 SDL2main)
+
+add_custom_command(TARGET Jam
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+		"${PROJECT_SOURCE_DIR}/SDL2/SDL2.dll"
+		$<TARGET_FILE_DIR:Jam>
+)
