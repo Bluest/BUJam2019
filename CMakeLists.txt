@@ -16,11 +16,14 @@ add_executable(Jam
 	src/main.cpp
 )
 
-target_link_libraries(Jam SDL2 SDL2main)
+target_link_libraries(Jam SDL2 SDL2main SDL2_mixer)
 
 add_custom_command(TARGET Jam
 	POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy
 		"${PROJECT_SOURCE_DIR}/SDL2/SDL2.dll"
+		$<TARGET_FILE_DIR:Jam>
+	COMMAND ${CMAKE_COMMAND} -E copy
+		"${PROJECT_SOURCE_DIR}/SDL2/SDL2_mixer.dll"
 		$<TARGET_FILE_DIR:Jam>
 )
