@@ -1,13 +1,5 @@
 #include "Audio.h"
 
-Audio::~Audio()
-{
-	Mix_FreeMusic(music);
-	Mix_FreeChunk(effect);
-	music = nullptr;
-	effect = nullptr;
-}
-
 void Audio::loadMusic(const std::string& _path)
 {
 	music = Mix_LoadMUS(_path.c_str());
@@ -38,4 +30,25 @@ void Audio::play() const
 			Mix_PlayChannel(-1, effect, 0);
 	}
 	else { throw std::exception("Sound Effect was not applied to this Audio instance!"); }
+}
+
+void Audio::pause() const
+{
+	if (Mix_PlayingMusic() == 0)
+		Mix_PlayMusic(music, -1);
+	else
+	{
+		if (Mix_PausedMusic() == 1)
+			Mix_ResumeMusic();
+		else
+			Mix_PauseMusic();
+	}
+}
+
+Audio::~Audio()
+{
+	Mix_FreeMusic(music);
+	Mix_FreeChunk(effect);
+	music = nullptr;
+	effect = nullptr;
 }
