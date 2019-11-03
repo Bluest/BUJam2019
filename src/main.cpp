@@ -2,8 +2,7 @@
 
 int main(int argc, char* argv[])
 {
-	Jam jam;
-	jam.run();
-	jam.quit();
+	std::unique_ptr<Jam> jam = std::make_unique<Jam>();
+	jam->run();
 	return 0;
 }

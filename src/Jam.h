@@ -6,18 +6,18 @@
 class Jam
 {
 private:
-	const int windowW = 200;
-	const int windowH = 200;
+	const int windowWidth = 200;
+	const int windowHeight = 200;
 	const int rendererScale = 2;
 
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
 
-	void init(SDL_Window** _window, SDL_Renderer** _renderer);
+	void init(SDL_Window* _window, SDL_Renderer* _renderer);
 
 public:
 	Jam();
+	~Jam();
 
 	void run();
-	void quit();
 };
