@@ -52,5 +52,6 @@ Jam::~Jam()
 	std::cout << "Quitting..." << std::endl;
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
+	Mix_Quit();
 	SDL_Quit();
 }

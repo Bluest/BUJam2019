@@ -15,6 +15,8 @@ add_executable(Jam
 	src/Jam.cpp
 	src/Input.h
 	src/Input.cpp
+	src/Audio.h
+	src/Audio.cpp
 	src/main.cpp
 )
 
