@@ -22,6 +22,7 @@ private:
 	const int rendererScale = 2;
 
 	std::list<std::shared_ptr<GameObject>> gameObjects;
+	SDL_Rect infiltratorPos = { 400, 400, 20, 20 };
 
 	Input input;
 	SDL_Event event;
@@ -33,7 +34,6 @@ private:
 	//template<typename T>
 	//void addGameObject(std::shared_ptr<T> _gameObject);
 
-	void start();
 	void update(InputsThisFrame _inputsThisFrame);
 	void draw();
 

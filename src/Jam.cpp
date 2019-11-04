@@ -1,6 +1,5 @@
-#include "GameObject.h"
-
 #include "Jam.h"
+#include "GameObject.h"
 
 Jam::Jam()
 {
@@ -42,7 +41,6 @@ void Jam::init(SDL_Window* _window, SDL_Renderer** _renderer)
 	SDL_RenderSetLogicalSize(*_renderer, windowWidth / rendererScale, windowHeight / rendererScale);
 	SDL_SetRenderDrawColor(*_renderer, 0, 0, 32, 255);
 
-
 	///Test object delete this
 	//addGameObject(std::make_shared<GameObject>("yes", 2, 2, NULL));
 }
@@ -58,15 +56,8 @@ void Jam::addGameObject(std::shared_ptr<T> _gameObject)
 	throw std::exception();
 }*/
 
-void Jam::start()
-{
-	std::cout << "Start!" << std::endl;
-}
-
 void Jam::run()
 {
-	start();
-
 	while (!input.quit)
 	{
 		update(input.processInput(&event));
@@ -95,6 +86,15 @@ void Jam::update(InputsThisFrame _inputsThisFrame)
 
 void Jam::draw()
 {
+	/*
+	SDL_RenderClear(renderer);
+	for (auto it = gameObjects.begin(); it != gameObjects.end(); it++)
+	{
+		SDL_RenderCopy(renderer, it->sprite->tex, it->cellRect, it->pos);
+	}
+	SDL_RenderPresent(renderer);
+	*/
+
 	SDL_Texture* shipSprite = IMG_LoadTexture(renderer, /* Remove "../" when we're finished! */ "../Sprites/ship.png");
 	SDL_Rect shipPos = { 100, 0, 600, 400 };
 
