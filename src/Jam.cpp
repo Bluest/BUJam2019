@@ -65,12 +65,11 @@ void Jam::update(GameKeys _keysPressed)
 		std::cout << "RMB pressed" << std::endl;
 	}
 
-	SDL_Texture* shipSprite = IMG_LoadTexture(renderer, "Sprites/ship.png");
-	std::cout << IMG_GetError() << std::endl;
-	SDL_Rect shipPos = { 100, 100, 500, 500 };
+	SDL_Texture* shipSprite = IMG_LoadTexture(renderer, /* Remove "../" when we're finished! */ "../Sprites/ship.png");
+	SDL_Rect shipPos = { 100, 0, 600, 400 };
 
 	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, shipSprite, NULL, &shipPos);
+	SDL_RenderCopy(renderer, shipSprite, nullptr, &shipPos);
 	SDL_RenderPresent(renderer);
 	SDL_DestroyTexture(shipSprite);
 }
