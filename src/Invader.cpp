@@ -1,7 +1,5 @@
 #include "Invader.h"
 
-
-
 Invader::Invader()
 {
 }

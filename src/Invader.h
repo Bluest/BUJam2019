@@ -5,4 +5,3 @@ public:
 	Invader();
 	~Invader();
 };
-

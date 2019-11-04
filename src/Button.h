@@ -5,4 +5,3 @@ public:
 	Button();
 	~Button();
 };
-
