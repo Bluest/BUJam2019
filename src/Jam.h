@@ -5,6 +5,8 @@
 #include <iostream>
 #include <memory>
 
+#include "Input.h"
+
 class Jam
 {
 private:
@@ -15,7 +17,12 @@ private:
 	SDL_Renderer* renderer = nullptr;
 	const int rendererScale = 2;
 
-	void init(SDL_Window* _window, SDL_Renderer* _renderer);
+	Input input;
+	SDL_Event event;
+
+	void init(SDL_Window* _window, SDL_Renderer** _renderer);
+
+	void update(GameKeys _keysPressed);
 
 public:
 	Jam();

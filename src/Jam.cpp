@@ -2,10 +2,10 @@
 
 Jam::Jam()
 {
-	init(window, renderer);
+	init(window, &renderer);
 }
 
-void Jam::init(SDL_Window* _window, SDL_Renderer* _renderer)
+void Jam::init(SDL_Window* _window, SDL_Renderer** _renderer)
 {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
 	{
@@ -28,23 +28,41 @@ void Jam::init(SDL_Window* _window, SDL_Renderer* _renderer)
 		throw std::exception(SDL_GetError());
 	}
 
-	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
+	*_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
 	if (_renderer == nullptr)
 	{
 		printf("SDL Renderer could not be created! SDL Error:");
 		throw std::exception(SDL_GetError());
 	}
 
-	SDL_RenderSetLogicalSize(_renderer, windowWidth / rendererScale, windowHeight / rendererScale);
-	SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
+	SDL_RenderSetLogicalSize(*_renderer, windowWidth / rendererScale, windowHeight / rendererScale);
+	SDL_SetRenderDrawColor(*_renderer, 0, 0, 0, 255);
 }
 
 void Jam::run()
 {
-	for (int i = 1; i <= 10; i++)
+	while (!input.quit)
 	{
-		std::cout << i << std::endl;
+		update(input.processInput(&event));
+		// draw();
+		// delta time;
 	}
+}
+
+void Jam::update(GameKeys _keysPressed)
+{
+	if (_keysPressed.mouseLeft)
+	{
+		std::cout << "LMB pressed" << std::endl;
+	}
+
+	if (_keysPressed.mouseRight)
+	{
+		std::cout << "RMB pressed" << std::endl;
+	}
+
+	SDL_RenderClear(renderer);
+	SDL_RenderPresent(renderer);
 }
 
 Jam::~Jam()
