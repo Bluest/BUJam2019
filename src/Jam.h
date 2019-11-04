@@ -6,6 +6,7 @@
 #include <memory>
 
 #include "Input.h"
+#include "Audio.h"
 
 class Jam
 {
@@ -19,6 +20,7 @@ private:
 
 	Input input;
 	SDL_Event event;
+	Audio sfx;
 
 	void init(SDL_Window* _window, SDL_Renderer** _renderer);
 

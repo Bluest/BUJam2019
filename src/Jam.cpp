@@ -54,6 +54,8 @@ void Jam::update(GameKeys _keysPressed)
 	if (_keysPressed.mouseLeft)
 	{
 		std::cout << "LMB pressed" << std::endl;
+		sfx.loadEffect("Assets/Gun-Shot.wav");
+		sfx.play();
 	}
 
 	if (_keysPressed.mouseRight)
