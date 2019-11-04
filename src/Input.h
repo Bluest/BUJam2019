@@ -8,13 +8,23 @@ struct GameKeys
 	/// bool key;
 };
 
+// struct MouseEvents
+
+/*struct GameInputs
+{
+	GameKeys keysPressed;
+	GameKeys keysReleased;
+	MouseEvents such as clicks, scrolls and mouse movement?
+};*/
+
 class Input
 {
 private:
-	/// bool holdKey;
-
 	GameKeys keysPressed;
 	GameKeys keysHeld;
+	// GameKeys keysReleased;
+
+	// GameInputs inputsThisFrame;
 
 	void processKeyDown(SDL_Event* _event);
 	void processKeyUp(SDL_Event* _event);
