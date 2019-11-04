@@ -44,10 +44,10 @@ void Jam::init(SDL_Window* _window, SDL_Renderer** _renderer)
 
 
 	///Test object delete this
-	addGameObject(std::make_shared<GameObject>("yes", 2, 2, NULL));
+	//addGameObject(std::make_shared<GameObject>("yes", 2, 2, NULL));
 }
 
-template <typename T>
+/*template <typename T>
 void Jam::addGameObject(std::shared_ptr<T> _gameObject)
 {
 	if (_gameObject = std::static_pointer_cast<GameObject>())
@@ -56,27 +56,33 @@ void Jam::addGameObject(std::shared_ptr<T> _gameObject)
 	}
 
 	throw std::exception();
+}*/
+
+void Jam::start()
+{
+	std::cout << "Start!" << std::endl;
 }
 
 void Jam::run()
 {
+	start();
+
 	while (!input.quit)
 	{
 		update(input.processInput(&event));
-
-		for (auto it = gameObjects.begin(); it != gameObjects.end(); it++)
-		{
-			(*it)->Update();
-		}
-
-		// draw();
+		draw();
 		// delta time;
 	}
 }
 
 void Jam::update(GameKeys _keysPressed)
 {
-	if (_keysPressed.mouseLeft)
+	for (auto it = gameObjects.begin(); it != gameObjects.end(); it++)
+	{
+		(*it)->Update();
+	}
+
+	/*if (_keysPressed.mouseLeft)
 	{
 		std::cout << "LMB pressed" << std::endl;
 		//sfx.loadEffect("Assets/Gun-Shot.wav");
@@ -86,8 +92,11 @@ void Jam::update(GameKeys _keysPressed)
 	if (_keysPressed.mouseRight)
 	{
 		std::cout << "RMB pressed" << std::endl;
-	}
+	}*/
+}
 
+void Jam::draw()
+{
 	SDL_Texture* shipSprite = IMG_LoadTexture(renderer, /* Remove "../" when we're finished! */ "../Sprites/ship.png");
 	SDL_Rect shipPos = { 100, 0, 600, 400 };
 

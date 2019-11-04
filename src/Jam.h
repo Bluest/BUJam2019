@@ -30,10 +30,12 @@ private:
 	//Functions
 	void init(SDL_Window* _window, SDL_Renderer** _renderer);
 
-	template<typename T>
-	void addGameObject(std::shared_ptr<T> _gameObject);
+	//template<typename T>
+	//void addGameObject(std::shared_ptr<T> _gameObject);
 
+	void start();
 	void update(GameKeys _keysPressed);
+	void draw();
 
 public:
 	Jam();
