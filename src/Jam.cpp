@@ -36,7 +36,7 @@ void Jam::init(SDL_Window* _window, SDL_Renderer** _renderer)
 	}
 
 	SDL_RenderSetLogicalSize(*_renderer, windowWidth / rendererScale, windowHeight / rendererScale);
-	SDL_SetRenderDrawColor(*_renderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(*_renderer, 0, 0, 32, 255);
 }
 
 void Jam::run()
@@ -54,8 +54,8 @@ void Jam::update(GameKeys _keysPressed)
 	if (_keysPressed.mouseLeft)
 	{
 		std::cout << "LMB pressed" << std::endl;
-		sfx.loadEffect("Assets/Gun-Shot.wav");
-		sfx.play();
+		//sfx.loadEffect("Assets/Gun-Shot.wav");
+		//sfx.play();
 	}
 
 	if (_keysPressed.mouseRight)

@@ -12,8 +12,8 @@ class Jam
 {
 private:
 	SDL_Window* window = nullptr;
-	const int windowWidth = 200;
-	const int windowHeight = 200;
+	const int windowWidth = 1600;
+	const int windowHeight = 800;
 
 	SDL_Renderer* renderer = nullptr;
 	const int rendererScale = 2;

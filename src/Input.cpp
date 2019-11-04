@@ -37,8 +37,8 @@ void Input::processMouseUp(SDL_Event* _event)
 {
 	switch (_event->button.button)
 	{
-	case SDL_BUTTON_LEFT: { keysPressed.mouseLeft = true; break; }
-	case SDL_BUTTON_RIGHT: { keysPressed.mouseRight = true; break; }
+	//case SDL_BUTTON_LEFT: { keysPressed.mouseLeft = true; break; }
+	//case SDL_BUTTON_RIGHT: { keysPressed.mouseRight = true; break; }
 	}
 }
 
