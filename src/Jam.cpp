@@ -75,24 +75,22 @@ void Jam::run()
 	}
 }
 
-void Jam::update(GameKeys _keysPressed)
+void Jam::update(InputsThisFrame _inputsThisFrame)
 {
 	for (auto it = gameObjects.begin(); it != gameObjects.end(); it++)
 	{
 		(*it)->Update();
 	}
 
-	/*if (_keysPressed.mouseLeft)
-	{
-		std::cout << "LMB pressed" << std::endl;
-		//sfx.loadEffect("Assets/Gun-Shot.wav");
-		//sfx.play();
-	}
+	if (_inputsThisFrame.lmbPress) std::cout << "LMB pressed" << std::endl;
+	if (_inputsThisFrame.lmbRelease) std::cout << "LMB released" << std::endl;
+	if (_inputsThisFrame.rmbPress) std::cout << "RMB pressed" << std::endl;
+	if (_inputsThisFrame.rmbRelease) std::cout << "RMB released" << std::endl;
 
-	if (_keysPressed.mouseRight)
-	{
-		std::cout << "RMB pressed" << std::endl;
-	}*/
+	if (input.keysHeld.w) std::cout << "^";
+	if (input.keysHeld.a) std::cout << "<";
+	if (input.keysHeld.s) std::cout << "v";
+	if (input.keysHeld.d) std::cout << ">";
 }
 
 void Jam::draw()

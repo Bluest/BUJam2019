@@ -2,8 +2,7 @@
 
 Input::Input()
 {
-	keysPressed = { false, false };
-	keysHeld = { false, false };
+	keysHeld = { false, false, false, false };
 
 	quit = false;
 }
@@ -12,7 +11,10 @@ void Input::processKeyDown(SDL_Event* _event)
 {
 	switch (_event->key.keysym.sym)
 	{
-	/// case SDL_Keycode: { keysPressed.key = true; keysHeld.key = true; break; }
+	case SDLK_w: { keysHeld.w = true; break; }
+	case SDLK_a: { keysHeld.a = true; break; }
+	case SDLK_s: { keysHeld.s = true; break; }
+	case SDLK_d: { keysHeld.d = true; break; }
 	}
 }
 
@@ -20,7 +22,10 @@ void Input::processKeyUp(SDL_Event* _event)
 {
 	switch (_event->key.keysym.sym)
 	{
-	/// case SDL_Keycode: { /*keysReleased.key = true;*/ keysHeld.key = false; break; }
+	case SDLK_w: { keysHeld.w = false; break; }
+	case SDLK_a: { keysHeld.a = false; break; }
+	case SDLK_s: { keysHeld.s = false; break; }
+	case SDLK_d: { keysHeld.d = false; break; }
 	}
 }
 
@@ -28,8 +33,8 @@ void Input::processMouseDown(SDL_Event* _event)
 {
 	switch (_event->button.button)
 	{
-	case SDL_BUTTON_LEFT: { keysPressed.mouseLeft = true; break; }
-	case SDL_BUTTON_RIGHT: { keysPressed.mouseRight = true; break; }
+	case SDL_BUTTON_LEFT: { inputsThisFrame.lmbPress = true; break; }
+	case SDL_BUTTON_RIGHT: { inputsThisFrame.rmbPress = true; break; }
 	}
 }
 
@@ -37,14 +42,14 @@ void Input::processMouseUp(SDL_Event* _event)
 {
 	switch (_event->button.button)
 	{
-	//case SDL_BUTTON_LEFT: { keysPressed.mouseLeft = true; break; }
-	//case SDL_BUTTON_RIGHT: { keysPressed.mouseRight = true; break; }
+	case SDL_BUTTON_LEFT: { inputsThisFrame.lmbRelease = true; break; }
+	case SDL_BUTTON_RIGHT: { inputsThisFrame.rmbRelease = true; break; }
 	}
 }
 
-GameKeys Input::processInput(SDL_Event* _event)
+InputsThisFrame Input::processInput(SDL_Event* _event)
 {
-	keysPressed = { false, false };
+	inputsThisFrame = { false, false, false, false };
 
 	while (SDL_PollEvent(_event))
 	{
@@ -58,5 +63,5 @@ GameKeys Input::processInput(SDL_Event* _event)
 		}
 	}
 
-	return keysPressed; // return inputsThisFrame
+	return inputsThisFrame;
 }

@@ -34,7 +34,7 @@ private:
 	//void addGameObject(std::shared_ptr<T> _gameObject);
 
 	void start();
-	void update(GameKeys _keysPressed);
+	void update(InputsThisFrame _inputsThisFrame);
 	void draw();
 
 public:

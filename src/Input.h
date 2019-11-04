@@ -1,30 +1,26 @@
 #pragma once
 #include <SDL.h>
 
-struct GameKeys
+struct KeysHeld
 {
-	bool mouseLeft;
-	bool mouseRight;
-	/// bool key;
+	bool w;
+	bool a;
+	bool s;
+	bool d;
 };
 
-// struct MouseEvents
-
-/*struct GameInputs
+struct InputsThisFrame
 {
-	GameKeys keysPressed;
-	GameKeys keysReleased;
-	MouseEvents such as clicks, scrolls and mouse movement?
-};*/
+	bool lmbPress;
+	bool lmbRelease;
+	bool rmbPress;
+	bool rmbRelease;
+};
 
 class Input
 {
 private:
-	GameKeys keysPressed;
-	GameKeys keysHeld;
-	// GameKeys keysReleased;
-
-	// GameInputs inputsThisFrame;
+	InputsThisFrame inputsThisFrame;
 
 	void processKeyDown(SDL_Event* _event);
 	void processKeyUp(SDL_Event* _event);
@@ -32,9 +28,10 @@ private:
 	void processMouseUp(SDL_Event* _event);
 
 public:
+	KeysHeld keysHeld;
 	bool quit;
 
 	Input();
 
-	GameKeys processInput(SDL_Event* _event);
+	InputsThisFrame processInput(SDL_Event* _event);
 };
