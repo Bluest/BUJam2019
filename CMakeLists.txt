@@ -15,17 +15,25 @@ add_executable(Jam
 	src/Jam.cpp
 	src/Input.h
 	src/Input.cpp
+	src/Sprite.h
+	src/Sprite.cpp
 	src/Audio.h
 	src/Audio.cpp
 	src/main.cpp
 )
 
-target_link_libraries(Jam SDL2 SDL2main SDL2_mixer)
+target_link_libraries(Jam SDL2 SDL2main SDL2_image SDL2_mixer)
 
 add_custom_command(TARGET Jam
 	POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy
 		"${PROJECT_SOURCE_DIR}/SDL2/SDL2.dll"
+		$<TARGET_FILE_DIR:Jam>
+	COMMAND ${CMAKE_COMMAND} -E copy
+		"${PROJECT_SOURCE_DIR}/SDL2/SDL2_image.dll"
+		$<TARGET_FILE_DIR:Jam>
+	COMMAND ${CMAKE_COMMAND} -E copy
+		"${PROJECT_SOURCE_DIR}/SDL2/libpng16-16.dll"
 		$<TARGET_FILE_DIR:Jam>
 	COMMAND ${CMAKE_COMMAND} -E copy
 		"${PROJECT_SOURCE_DIR}/SDL2/SDL2_mixer.dll"

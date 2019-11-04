@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 #include <iostream>
 #include <memory>
+#include <list>
 
 #include "Input.h"
 #include "Audio.h"

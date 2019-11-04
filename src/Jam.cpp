@@ -13,6 +13,8 @@ void Jam::init(SDL_Window* _window, SDL_Renderer** _renderer)
 		throw std::exception(SDL_GetError());
 	}
 
+	IMG_Init(IMG_INIT_PNG);
+
 	//Initialize SDL_mixer
 	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
 	{
@@ -63,8 +65,14 @@ void Jam::update(GameKeys _keysPressed)
 		std::cout << "RMB pressed" << std::endl;
 	}
 
+	SDL_Texture* shipSprite = IMG_LoadTexture(renderer, "Sprites/ship.png");
+	std::cout << IMG_GetError() << std::endl;
+	SDL_Rect shipPos = { 100, 100, 500, 500 };
+
 	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, shipSprite, NULL, &shipPos);
 	SDL_RenderPresent(renderer);
+	SDL_DestroyTexture(shipSprite);
 }
 
 Jam::~Jam()
@@ -72,6 +80,7 @@ Jam::~Jam()
 	std::cout << "Quitting..." << std::endl;
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
+	IMG_Quit();
 	Mix_Quit();
 	SDL_Quit();
 }
