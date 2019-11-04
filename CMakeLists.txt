@@ -22,6 +22,12 @@ add_executable(Jam
 	src/main.cpp
 	src/GameObject.h
 	src/GameObject.cpp
+	src/Button.h
+	src/Button.cpp
+	src/Invader.h
+	src/Invader.cpp
+	src/Defender.h
+	src/Defender.cpp
 )
 
 target_link_libraries(Jam SDL2 SDL2main SDL2_image SDL2_mixer)

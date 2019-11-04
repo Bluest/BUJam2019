@@ -1,3 +1,5 @@
+#include "GameObject.h"
+
 #include "Jam.h"
 
 Jam::Jam()
@@ -39,6 +41,21 @@ void Jam::init(SDL_Window* _window, SDL_Renderer** _renderer)
 
 	SDL_RenderSetLogicalSize(*_renderer, windowWidth / rendererScale, windowHeight / rendererScale);
 	SDL_SetRenderDrawColor(*_renderer, 0, 0, 32, 255);
+
+
+	///Test object delete this
+	addGameObject(std::make_shared<GameObject>("yes", 2, 2, NULL));
+}
+
+template <typename T>
+void Jam::addGameObject(std::shared_ptr<T> _gameObject)
+{
+	if (_gameObject = std::static_pointer_cast<GameObject>())
+	{
+		gameObjects.push_back(_gameObject); //Add game object to the list of objects
+	}
+
+	throw std::exception();
 }
 
 void Jam::run()
@@ -46,6 +63,12 @@ void Jam::run()
 	while (!input.quit)
 	{
 		update(input.processInput(&event));
+
+		for (auto it = gameObjects.begin(); it != gameObjects.end(); it++)
+		{
+			(*it)->Update();
+		}
+
 		// draw();
 		// delta time;
 	}

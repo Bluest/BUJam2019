@@ -9,6 +9,8 @@
 #include "Input.h"
 #include "Audio.h"
 
+class GameObject;
+
 class Jam
 {
 private:
@@ -19,11 +21,17 @@ private:
 	SDL_Renderer* renderer = nullptr;
 	const int rendererScale = 2;
 
+	std::list<std::shared_ptr<GameObject>> gameObjects;
+
 	Input input;
 	SDL_Event event;
 	Audio sfx;
 
+	//Functions
 	void init(SDL_Window* _window, SDL_Renderer** _renderer);
+
+	template<typename T>
+	void addGameObject(std::shared_ptr<T> _gameObject);
 
 	void update(GameKeys _keysPressed);
 
