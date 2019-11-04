@@ -20,6 +20,8 @@ add_executable(Jam
 	src/Audio.h
 	src/Audio.cpp
 	src/main.cpp
+	src/GameObject.h
+	src/GameObject.cpp
 )
 
 target_link_libraries(Jam SDL2 SDL2main SDL2_image SDL2_mixer)
