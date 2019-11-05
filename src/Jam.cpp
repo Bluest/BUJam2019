@@ -82,6 +82,8 @@ void Jam::update(InputsThisFrame _inputsThisFrame)
 	if (input.keysHeld.a) std::cout << "<";
 	if (input.keysHeld.s) std::cout << "v";
 	if (input.keysHeld.d) std::cout << ">";
+	if (input.keysHeld.mouseLeft) std::cout << "A";
+	if (input.keysHeld.mouseRight) std::cout << "B";
 }
 
 void Jam::draw()

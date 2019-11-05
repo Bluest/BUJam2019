@@ -2,7 +2,7 @@
 
 Input::Input()
 {
-	keysHeld = { false, false, false, false };
+	keysHeld = { false, false, false, false, false, false };
 
 	quit = false;
 }
@@ -33,8 +33,8 @@ void Input::processMouseDown(SDL_Event* _event)
 {
 	switch (_event->button.button)
 	{
-	case SDL_BUTTON_LEFT: { inputsThisFrame.lmbPress = true; break; }
-	case SDL_BUTTON_RIGHT: { inputsThisFrame.rmbPress = true; break; }
+	case SDL_BUTTON_LEFT: { inputsThisFrame.lmbPress = true; keysHeld.mouseLeft = true; break; }
+	case SDL_BUTTON_RIGHT: { inputsThisFrame.rmbPress = true; keysHeld.mouseRight = true; break; }
 	}
 }
 
@@ -42,8 +42,8 @@ void Input::processMouseUp(SDL_Event* _event)
 {
 	switch (_event->button.button)
 	{
-	case SDL_BUTTON_LEFT: { inputsThisFrame.lmbRelease = true; break; }
-	case SDL_BUTTON_RIGHT: { inputsThisFrame.rmbRelease = true; break; }
+	case SDL_BUTTON_LEFT: { inputsThisFrame.lmbRelease = true; keysHeld.mouseLeft = false; break; }
+	case SDL_BUTTON_RIGHT: { inputsThisFrame.rmbRelease = true; keysHeld.mouseRight = false; break; }
 	}
 }
 

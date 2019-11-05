@@ -18,7 +18,7 @@ private:
 	const int windowWidth = 1600;
 	const int windowHeight = 800;
 
-	SDL_Renderer* renderer;
+	SDL_Renderer* renderer = nullptr;
 	const int rendererScale = 2;
 
 	std::list<std::shared_ptr<GameObject>> gameObjects;

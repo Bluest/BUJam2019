@@ -7,6 +7,8 @@ struct KeysHeld
 	bool a;
 	bool s;
 	bool d;
+	bool mouseLeft;
+	bool mouseRight;
 };
 
 struct InputsThisFrame
